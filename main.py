@@ -11,3 +11,13 @@ if resposta.status_code != 200:
     raise SystemExit()
 
 print("Conexão bem-sucedida!")
+
+soup = BeautifulSoup(resposta.text, "html.parser")
+
+print(soup.title)
+
+# busca os livros da pagina principal
+livros_html = soup.find_all("article", class_="product_pod")
+
+# impressao encontrados
+print(len(livros_html))
