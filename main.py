@@ -21,3 +21,18 @@ livros_html = soup.find_all("article", class_="product_pod")
 
 # impressao encontrados
 print(len(livros_html))
+
+dados_extraidos = []
+
+for livro in livros_html:
+    titulo = livro.find("h3").find("a")["title"]
+    preco = livro.find("p", class_="price_color").text.strip()
+
+    livro_atual = {
+        "titulo": titulo,
+        "preco": preco
+    }
+
+    dados_extraidos.append(livro_atual)
+
+print(dados_extraidos)
